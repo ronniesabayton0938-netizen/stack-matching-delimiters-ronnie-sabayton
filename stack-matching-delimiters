@@ -1,0 +1,48 @@
+/*
+ Description: Performs binary search recursively and displays
+              the steps taken to find a target value.
+ Programmed by: Ronnie A. Sabayton
+ Last Modified: October 29, 2026
+ Version: 1.9
+*/
+
+public class RecursiveSearch {
+
+    public static int binarySearch(int[] arr, int left,
+                                   int right, int target) {
+
+        if (left > right) {
+            System.out.println("Target not found.");
+            return -1;
+        }
+
+        int mid = left + (right - left) / 2;
+
+        System.out.println("Checking index: " + mid);
+        System.out.println("Value: " + arr[mid]);
+
+        if (arr[mid] == target) {
+            System.out.println("Target found at index: " + mid);
+            return mid;
+        }
+
+        if (arr[mid] > target) {
+            System.out.println("Searching left half.");
+            return binarySearch(arr, left, mid - 1, target);
+        } else {
+            System.out.println("Searching right half.");
+            return binarySearch(arr, mid + 1, right, target);
+        }
+    }
+
+    public static void main(String[] args) {
+
+        int[] numbers = {10, 20, 30, 40, 50, 60, 70};
+        int target = 50;
+
+        System.out.println("Recursive Binary Search");
+        System.out.println("Target: " + target);
+
+        binarySearch(numbers, 0, numbers.length - 1, target);
+    }
+}
